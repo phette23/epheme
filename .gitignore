@@ -1,0 +1,7 @@
+data
+img
+bin
+include
+lib
+.Python
+*.pyc

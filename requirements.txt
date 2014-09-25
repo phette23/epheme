@@ -1,0 +1,10 @@
+httplib2==0.9
+oauth2==1.5.211
+oauthlib==0.6.3
+pymongo==2.7.2
+python-dateutil==2.2
+requests==2.4.1
+requests-oauthlib==0.4.1
+six==1.8.0
+twarc==0.0.7
+wsgiref==0.1.2
