@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Ephemages</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script>
+    var root = 'http://localhost:28017/'
+        // change to whatever text you searched on
+        , db = encodeURIComponent('#ccarts')
+        , collection = 'images'
+        , url = root + db + '/' + collection + '/'
+        // number of images to display
+        // probably shouldn't stick to default of a thousand
+        , limit = 50;
+
+    function onSuccess (data) {
+        var srcs = data.rows.map(function (row) {
+            // last piece of row.url is filename
+            return '/img/' + row.url.split('/')[4];
+        });
+
+        srcs.forEach(function(src){
+            $('body').append('<img src="' + src + '">');
+        });
+    }
+
+    $.ajax({
+        url: url,
+        dataType: 'jsonp',
+        // mongo's built-in API expects callback to be "jsonp" param
+        jsonp: 'jsonp',
+        data: {limit: limit},
+    }).success(onSuccess);
+    </script>
+</head>
+<!-- Twitter seems to limit image width to 600px,
+the fixed width tiles them vertically -->
+<body style="width:600px;">

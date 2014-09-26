@@ -1,6 +1,6 @@
 # epheme
 
-Small Twitter archiving project using [twarc](https://github.com/edsu/twarc) & MongoDB.
+Small archiving project using [twarc](https://github.com/edsu/twarc) & MongoDB to retain Twitter metadata & download native (not linked) images.
 
 ```
 usage: epheme.py [-h] [-i IMAGES] text
@@ -16,9 +16,11 @@ optional arguments:
 
 Images directory defaults to "img".
 
+The functionality built on top of twarc is modest but I'm specifically interested in grabbing images from Twitter. Setting epheme to run regularly (e.g. with cron) lets me continually archive search results, related images, & use mongo's API to display them. There's a small example included here.
+
 ## Setup
 
-Requires virtualenv & mongodb. On a Mac, you can get these with `sudo pip install virtualenv; brew install mongodb`.
+Requires virtualenv & mongodb. On a Mac with homebrew, you can get these with `sudo pip install virtualenv; brew install mongodb`.
 
 ```sh
 # set up virtual env in the project root, activate, install dependencies
@@ -35,6 +37,6 @@ mongod --config mongod.conf &
 
 ## To Do
 
-- [ ] example - use mongo REST API to display wall of images
+- [x] example - use mongo REST API to display wall of images
 - [ ] mongo indexing wherever the db get queried
-- [ ] logging of some sort? Can always just pipe command's output to a file
+- [ ] logging of some sort? Can always pipe output to a file
