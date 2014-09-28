@@ -27,7 +27,7 @@ class Epheme:
     def __init__(self, text, images_dir):
         """ Initialize Epheme & then kick off the twarc search. """
         # store tweet JSON in a db with same name as search text
-        self.db = MongoClient()[text]
+        self.db = MongoClient()[text.replace(' ', '_')]
         self.images_dir = images_dir
         self.hashtag = text
 
