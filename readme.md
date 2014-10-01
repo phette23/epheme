@@ -38,5 +38,8 @@ mongod --config mongod.conf &
 ## To Do
 
 - [x] example - use mongo REST API to display wall of images
-- [ ] mongo indexing wherever the db get queried
 - [ ] logging of some sort? Can always pipe output to a file
+
+## License
+
+CC0 Public Domain
