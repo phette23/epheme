@@ -24,10 +24,13 @@ class Epheme:
     downloading image files to images_dir.
     """
 
-    def __init__(self, text, images_dir):
+    def __init__(self, text, images_dir, dbname):
         """ Initialize Epheme & then kick off the twarc search. """
         # store tweet JSON in a db with same name as search text
-        self.db = MongoClient()[text.replace(' ', '_')]
+        if dbname is None:
+            dbname = text.replace(' ', '_')
+
+        self.db = MongoClient()[dbname]
         self.images_dir = images_dir
         self.hashtag = text
 
@@ -129,8 +132,10 @@ if __name__ == "__main__":
     parser.add_argument('text', help='string to use in the Twitter search API')
     parser.add_argument('-i', '--images', help='directory to place downloaded'
                         + ' images in', default='img')
+    parser.add_argument('-d', '--database', help='name of database to store'
+                        + ' JSON in', default=None)
 
     args = parser.parse_args()
 
     # kick things off
-    archive = Epheme(args.text, args.images)
+    archive = Epheme(args.text, args.images, args.database)
