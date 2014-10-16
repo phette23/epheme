@@ -3,7 +3,7 @@
 Small archiving project using [twarc](https://github.com/edsu/twarc) & MongoDB to retain Twitter metadata & download native (not linked) images.
 
 ```
-usage: epheme.py [-h] [-i IMAGES] text
+usage: epheme.py [-h] [-i IMAGES] [-d DATABASE] text
 
 positional arguments:
   text                  string to use in the Twitter search API
@@ -12,9 +12,11 @@ optional arguments:
   -h, --help            show this help message and exit
   -i IMAGES, --images IMAGES
                         directory to place downloaded images in
+  -d DATABASE, --database DATABASE
+                        name of database to store JSON in
 ```
 
-Images directory defaults to "img".
+Images directory defaults to "img". Database defaults to the search text with spaces replaced by underscores (e.g. "#search_term").
 
 The functionality built on top of twarc is modest but I'm specifically interested in grabbing images from Twitter. Setting epheme to run regularly (e.g. with cron) lets me continually archive search results, related images, & use mongo's API to display them. There's a small example included here.
 
