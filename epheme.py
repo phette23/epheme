@@ -111,8 +111,10 @@ class Epheme:
         """
         filename = url.split('/')[-1]
         dest = os.path.join(self.images_dir, filename)
+        # explicitly ask for images to avoid getting gzip'd files
+        headers = {'Accept': 'image/*'}
         # http://stackoverflow.com/questions/13137817/how-to-download-image-using-requests
-        response = requests.get(url, stream=True)
+        response = requests.get(url, stream=True, headers=headers)
         if response.status_code == 200:
             with open(dest, 'wb') as out_file:
                 shutil.copyfileobj(response.raw, out_file)
