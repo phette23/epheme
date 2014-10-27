@@ -1,6 +1,7 @@
 data
 img
-bin
+bin/*
+!bin/gunzip-img.sh
 include
 lib
 .Python
