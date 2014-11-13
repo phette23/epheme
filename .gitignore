@@ -1,7 +1,8 @@
-data
-img
-bin
-include
-lib
+data/*
+img/*
+bin/*
+include/*
+lib/*
+local/*
 .Python
 *.pyc
